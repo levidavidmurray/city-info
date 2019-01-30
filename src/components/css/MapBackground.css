@@ -2,11 +2,12 @@
   height: 100vh;
   width: 100%;
   position: fixed;
-  background-color: purple;
+  background-color: #832483;
 }
 
 .static-map img {
   height: 100%;
   width: 100%;
-  opacity: 0.5;
+  opacity: 0.4;
+  object-fit: cover;
 }

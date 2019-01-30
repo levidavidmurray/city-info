@@ -11,9 +11,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div class="static-map">
-          <div class="overlay"></div>
-          <img src={this.staticMap} />
+        <div className="static-map">
+          <div className="overlay"></div>
+          <img src={this.staticMap} alt="Satellite shot of city" />
         </div>
       </div>
     );
