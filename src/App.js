@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { setCoordinates } from './redux/actions';
+import { setCoordinates, setCity } from './redux/actions';
 
 import MapBackground from './components/MapBackground';
 import { DEFAULT_LOCATION } from './constants';
@@ -23,14 +23,31 @@ class App extends React.Component  {
     navigator.geolocation.getCurrentPosition(success, error);
   }
 
+  renderStaticMap() {
+    if (this.props.cityLocation) {
+      return <MapBackground />;
+    }
+
+    // TODO: Add semantic-ui-react, replace with semantic loader
+    return <div>Please allow location access...</div>;
+  }
+
   componentDidMount() {
     this.getLocation();
+  }
+
+  componentDidUpdate() {
+    const { cityLocation, coords, setCity } = this.props;
+
+    if (cityLocation === undefined && coords) {
+      setCity(this.props.coords);
+    }
   }
 
   render() {
     return (
       <div>
-        <MapBackground />
+        {this.renderStaticMap()}
       </div>
     );
   }
@@ -38,10 +55,12 @@ class App extends React.Component  {
 
 const mapStateToProps = state => {
   const coords = state.coordinates[state.coordinates.length - 1];
-  return { coords };
+  const cityLocation = state.cityLocation[state.cityLocation.length - 1];
+  
+  return { coords, cityLocation };
 }
 
 export default connect(
   mapStateToProps,
-  { setCoordinates }
+  { setCoordinates, setCity }
 )(App);

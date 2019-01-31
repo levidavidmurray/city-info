@@ -1,26 +1,50 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { setCity } from '../redux/actions';
 
 import './css/MapBackground.css';
 import { API_KEY } from '../constants';
 
 class App extends React.Component {
 
-  // TODO: functionality to build static API link based on store data
-  staticMap = `https://maps.googleapis.com/maps/api/staticmap?center=Victoria+BC&zoom=12&size=640x360&scale=2&maptype=satellite&key=${API_KEY}`;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      staticMapLink: ''
+    };
+  }
+
+  getStaticMapLink(cityLocation) {
+    let { locality, admin_area, country } = cityLocation;
+
+    if (cityLocation.admin_area === undefined)
+      admin_area = { long_name: '' };
+
+    let link = `https://maps.googleapis.com/maps/api/staticmap?center=`;
+    link += `${locality.long_name}+${admin_area.long_name}+${country.long_name}`;
+    link += `BC&zoom=12&size=640x360&scale=2&maptype=satellite&key=${API_KEY}`;
+
+    link = link.replace(' ', '+');
+
+    return link;
+  }
 
   componentDidMount() {
-    const coords = this.props.geoInfo.coordinates;
-    this.props.setCity(coords[coords.length - 1]);
+    const { cityLocation } = this.props;
+
+    if (cityLocation.status !== 'ZERO_RESULTS') {
+      this.setState({
+        staticMapLink: this.getStaticMapLink(cityLocation)
+      });
+    }
   }
 
   render() {
     return (
       <div>
         <div className="static-map">
-          <img src={this.staticMap} alt="Satellite shot of city" />
+          <img src={this.state.staticMapLink} alt="Satellite shot of city" />
         </div>
       </div>
     );
@@ -28,10 +52,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { geoInfo: state };
+  return { 
+    coords: state.coordinates[state.coordinates.length - 1],
+    cityLocation: state.cityLocation[state.cityLocation.length -1]
+  };
 }
 
 export default connect(
   mapStateToProps,
-  { setCity }
+  null
 )(App);

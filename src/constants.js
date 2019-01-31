@@ -1,2 +1,2 @@
-export const DEFAULT_LOCATION = {lat: 48.4284, long: -123.3297};
+export const DEFAULT_LOCATION = {lat: 49.8352, long: -124.5247};
 export const API_KEY = 'AIzaSyChGY45cdD_ZET9XAFUc0WkLIfCjGR1MzM';
