@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
-import location from './location';
+import coordinates from './coordinates';
+import cityLocation from './cityLocation';
 
-export default combineReducers({ location });
+export default combineReducers({ coordinates, cityLocation });

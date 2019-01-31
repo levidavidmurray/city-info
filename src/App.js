@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { setLocation } from './redux/actions';
+import { setCoordinates } from './redux/actions';
 
 import MapBackground from './components/MapBackground';
 import { DEFAULT_LOCATION } from './constants';
@@ -10,14 +10,14 @@ import './components/css/App.css';
 class App extends React.Component  {
   getLocation() {
     const success = position => {
-      this.props.setLocation({
-        lat: position.coords.latitude, 
+      this.props.setCoordinates({
+        lat: position.coords.latitude,
         long: position.coords.longitude
       });
     };
 
     const error = () => {
-      this.props.setLocation(DEFAULT_LOCATION);
+      this.props.setCoordinates(DEFAULT_LOCATION);
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
@@ -30,11 +30,6 @@ class App extends React.Component  {
   render() {
     return (
       <div>
-        <div>
-          {this.props.coords.long}
-          <br/>
-          {this.props.coords.lat}
-        </div>
         <MapBackground />
       </div>
     );
@@ -42,10 +37,11 @@ class App extends React.Component  {
 }
 
 const mapStateToProps = state => {
-  return { coords: state.location[state.location.length - 1] };
+  const coords = state.coordinates[state.coordinates.length - 1];
+  return { coords };
 }
 
 export default connect(
   mapStateToProps,
-  { setLocation }
+  { setCoordinates }
 )(App);

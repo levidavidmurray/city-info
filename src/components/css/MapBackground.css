@@ -11,6 +11,6 @@
 .static-map img {
   height: 100%;
   width: 100%;
-  opacity: 0.4;
+  opacity: 0.15;
   object-fit: cover;
 }

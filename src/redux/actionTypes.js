@@ -1,1 +1,2 @@
-export const SET_LOCATION = 'FETCH_LOCATION';
+export const SET_COORDS = 'SET_COORDS';
+export const SET_CITY = 'SET_CITY';
