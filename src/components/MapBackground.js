@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
 import './css/MapBackground.css';
 import { API_KEY } from '../constants';
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);

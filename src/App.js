@@ -1,40 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { setCoordinates, setCity } from './redux/actions';
 
 import MapBackground from './components/MapBackground';
+import LocationName from './components/LocationName';
 import LoaderFS from './components/LoaderFS';
 
-import { DEFAULT_LOCATION } from './constants';
+import { DEFAULT_COORDINATES } from './constants';
 import './components/css/App.css';
 
-class App extends React.Component  {
-  getLocation() {
-    const success = position => {
-      this.props.setCoordinates({
-        lat: position.coords.latitude,
-        long: position.coords.longitude
-      });
-    };
+class App extends Component  {
 
-    const error = () => {
-      this.props.setCoordinates(DEFAULT_LOCATION);
-    }
+  constructor(props) {
+    super(props);
 
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
-
-  renderStaticMap() {
-    if (this.props.cityLocation) {
-      return <MapBackground />;
-    }
-
-    return <LoaderFS />;
-  }
-
-  componentDidMount() {
-    this.getLocation();
+    this.getClientCoordinates();
   }
 
   componentDidUpdate() {
@@ -45,10 +26,29 @@ class App extends React.Component  {
     }
   }
 
+  getClientCoordinates() {
+    const success = position => {
+      this.props.setCoordinates({
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      });
+    };
+
+    const error = () => {
+      this.props.setCoordinates(DEFAULT_COORDINATES);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
   render() {
+    if (!this.props.cityLocation)
+      return <LoaderFS />
+
     return (
       <div>
-        {this.renderStaticMap()}
+        <MapBackground />
+        <LocationName />
       </div>
     );
   }
