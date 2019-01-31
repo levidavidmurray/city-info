@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCoordinates, setCity } from './redux/actions';
 
-import MapBackground from './components/MapBackground';
-import LocationName from './components/LocationName';
+import StaticMap from './components/StaticMap';
+import CityName from './components/CityName';
 import LoaderFS from './components/LoaderFS';
 
 import { DEFAULT_COORDINATES } from './constants';
@@ -47,8 +47,8 @@ class App extends Component  {
 
     return (
       <div>
-        <MapBackground />
-        <LocationName />
+        <StaticMap />
+        <CityName />
       </div>
     );
   }

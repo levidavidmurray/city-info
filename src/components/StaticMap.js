@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './css/MapBackground.css';
 import { API_KEY } from '../constants';
 
-class App extends Component {
+class StaticMap extends Component {
 
   constructor(props) {
     super(props);
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(App);
+)(StaticMap);

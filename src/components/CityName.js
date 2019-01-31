@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './css/LocationName.scss';
 
-class LocationName extends Component {
+class CityName extends Component {
   render() {
     const { formatted_address } = this.props.cityLocation;
     return (
@@ -25,4 +25,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(LocationName);
+)(CityName);
