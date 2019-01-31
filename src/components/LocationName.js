@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import './css/LocationName.css';
+import './css/LocationName.scss';
 
 class LocationName extends Component {
   render() {
