@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { setCoordinates, setCity } from './redux/actions';
 
 import MapBackground from './components/MapBackground';
+import LoaderFS from './components/LoaderFS';
+
 import { DEFAULT_LOCATION } from './constants';
 import './components/css/App.css';
 
@@ -28,8 +30,7 @@ class App extends React.Component  {
       return <MapBackground />;
     }
 
-    // TODO: Add semantic-ui-react, replace with semantic loader
-    return <div>Please allow location access...</div>;
+    return <LoaderFS />;
   }
 
   componentDidMount() {
