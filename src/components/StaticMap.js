@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import './css/StaticMap.scss';
+import './scss/StaticMap.scss';
 import { API_KEY } from '../constants';
 
 class StaticMap extends Component {

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import wikiSummary from '../api/wikiSummary';
-import './css/CitySummary.scss';
+import './scss/CitySummary.scss';
 
 class CitySummary extends Component {
 
@@ -13,7 +13,8 @@ class CitySummary extends Component {
     this.getCitySummary();
 
     this.state = {
-      summary: ''
+      summary: '',
+      link: ''
     }
   }
 
@@ -34,14 +35,21 @@ class CitySummary extends Component {
       summaryText = summaryRequest.data.extract;
     }
 
+    console.log(await summaryRequest);
+
     this.setState({
-      summary: await summaryText
+      summary: await summaryText,
+      link: await summaryRequest.data.content_urls.desktop.page
     });
   }
 
   render() {
     return (
-      <div className="city-summary">{this.state.summary}</div>
+      <div className="city-summary">
+        <p>{this.state.summary}
+          <a href={this.state.link} target="_blank">Wikipedia</a>
+        </p>
+      </div>
     );
   }
 }

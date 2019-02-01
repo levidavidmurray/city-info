@@ -9,7 +9,7 @@ import CitySummary from './components/CitySummary';
 import LoaderFS from './components/LoaderFS';
 
 import { DEFAULT_COORDINATES } from './constants';
-import './components/css/App.scss';
+import './components/scss/App.scss';
 
 class App extends Component  {
 
@@ -49,8 +49,8 @@ class App extends Component  {
     return (
       <div>
         <StaticMap />
+        <CityName />
         <div className="content">
-          <CityName />
           <CitySummary />
         </div>
       </div>
