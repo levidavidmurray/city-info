@@ -1,3 +1,13 @@
+@keyframes summary-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.summary-fade-in {
+  opacity: 0;
+  animation: summary-fade-in 0.5s 3s forwards;
+}
+
 .city-summary {
   background-color: rgba(255, 255, 255, 0.75);
   padding: 10px 20px;
@@ -5,6 +15,7 @@
   border: 4px solid rgb(24, 24, 24);
   font-family: 'PT Serif', serif;
   font-size: 1.1em;
+  z-index: -1;
 
   p {
     margin-bottom: 0;

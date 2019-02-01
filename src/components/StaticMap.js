@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './scss/StaticMap.scss';
-import { API_KEY } from '../constants';
+import { API_KEY, PLAY_ANIMATIONS } from '../constants';
+
 
 class StaticMap extends Component {
 
@@ -41,8 +42,10 @@ class StaticMap extends Component {
   }
 
   render() {
+    let animMapFadeIn = PLAY_ANIMATIONS ? 'map-fade-in' : '';
+
     return (
-      <div className="static-map">
+      <div className={`static-map ${animMapFadeIn}`}>
         <img src={this.state.staticMapLink} alt="Satellite shot of city" />
       </div>
     );

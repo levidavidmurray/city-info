@@ -37,8 +37,9 @@ export const setCity = (coords) => async dispatch => {
       }
     });
 
-    if (!cityComponents.admin_area)
-      cityComponents.admin_area = cityComponents.country;
+    if (cityComponents.admin_area.short_name === cityComponents.locality.long_name) {
+      cityComponents.admin_area = undefined;
+    }
   
     cityComponents.formatted_address = locationInfo.data.results[0].formatted_address;
   }
