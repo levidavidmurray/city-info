@@ -6,11 +6,15 @@
   left: 0;
   z-index: -1;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
-    height: 100%;
-    width: 100%;
-    opacity: 0.3;
+    height: calc(100% - 65px);
+    width: calc(100% - 70px);
+    opacity: 0.2;
     object-fit: cover;
+    display: inline-block;
   }
 }
