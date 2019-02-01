@@ -5,10 +5,11 @@ import { setCoordinates, setCity } from './redux/actions';
 
 import StaticMap from './components/StaticMap';
 import CityName from './components/CityName';
+import CitySummary from './components/CitySummary';
 import LoaderFS from './components/LoaderFS';
 
 import { DEFAULT_COORDINATES } from './constants';
-import './components/css/App.css';
+import './components/css/App.scss';
 
 class App extends Component  {
 
@@ -48,7 +49,10 @@ class App extends Component  {
     return (
       <div>
         <StaticMap />
-        <CityName />
+        <div className="content">
+          <CityName />
+          <CitySummary />
+        </div>
       </div>
     );
   }

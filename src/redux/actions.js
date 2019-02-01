@@ -36,6 +36,9 @@ export const setCity = (coords) => async dispatch => {
           break;
       }
     });
+
+    if (!cityComponents.admin_area)
+      cityComponents.admin_area = cityComponents.country;
   
     cityComponents.formatted_address = locationInfo.data.results[0].formatted_address;
   }

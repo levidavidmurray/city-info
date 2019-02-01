@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import './css/MapBackground.css';
+import './css/StaticMap.scss';
 import { API_KEY } from '../constants';
 
 class StaticMap extends Component {
@@ -42,10 +42,8 @@ class StaticMap extends Component {
 
   render() {
     return (
-      <div>
-        <div className="static-map">
-          <img src={this.state.staticMapLink} alt="Satellite shot of city" />
-        </div>
+      <div className="static-map">
+        <img src={this.state.staticMapLink} alt="Satellite shot of city" />
       </div>
     );
   }

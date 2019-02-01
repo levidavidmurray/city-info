@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import './css/LocationName.scss';
+import './css/CityName.scss';
 
 class CityName extends Component {
   render() {
     const { formatted_address } = this.props.cityLocation;
     return (
-      <div className="location-name">
+      <div className="city-name">
         <h1>{ formatted_address }</h1>
       </div>
     );
