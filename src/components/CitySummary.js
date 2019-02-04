@@ -22,8 +22,6 @@ class CitySummary extends Component {
   async getCitySummary() {
     const { locality, admin_area, country } = this.props.cityLocation;
 
-    console.log(this.props.cityLocation);
-
     let summaryText;
     let summaryRequest;
 
@@ -34,8 +32,6 @@ class CitySummary extends Component {
       summaryRequest = await wikiSummary.get(`/${locality.long_name}, ${country.long_name}`);
       summaryText = summaryRequest.data.extract;
     }
-
-    console.log(await summaryRequest);
 
     this.setState({
       summary: await summaryText,

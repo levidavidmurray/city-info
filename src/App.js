@@ -28,6 +28,7 @@ class App extends Component  {
   }
 
   getClientCoordinates() {
+    // Success callback calls action to store location in redux store
     const success = position => {
       this.props.setCoordinates({
         lat: position.coords.latitude,
@@ -36,6 +37,7 @@ class App extends Component  {
     };
 
     const error = () => {
+      // If location access is denied, we set location to DEFAULT_COORDINATES
       this.props.setCoordinates(DEFAULT_COORDINATES);
     }
 
