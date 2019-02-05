@@ -52,7 +52,7 @@ class CitySummary extends Component {
     return (
       <div className={`city-summary ${animFadeIn}`}>
         <p>{summary}
-          <a href={this.state.link} target="_blank">Wikipedia</a>
+          <a href={this.state.link} target="_blank" rel="noopener noreferrer">Wikipedia</a>
         </p>
       </div>
     );

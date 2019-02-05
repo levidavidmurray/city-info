@@ -6,6 +6,7 @@ import { setCoordinates, setCity } from './redux/actions';
 import StaticMap from './components/StaticMap';
 import CityName from './components/CityName';
 import CitySummary from './components/CitySummary';
+import ForecastWeek from './components/ForecastWeek';
 import LoaderFS from './components/LoaderFS';
 
 import { DEFAULT_COORDINATES } from './constants';
@@ -54,6 +55,7 @@ class App extends Component  {
         <CityName />
         <div className="content">
           <CitySummary />
+          <ForecastWeek />
         </div>
       </div>
     );

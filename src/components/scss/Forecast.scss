@@ -1,0 +1,66 @@
+.forecast {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .day {
+    background-color: white;
+    min-width: 180px;
+    max-width: 210px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+
+    .condition-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: rgb(156, 160, 161);
+
+      img {
+        width: 64px;
+        margin-bottom: 10px;
+      }      
+    }
+
+    .temp {
+      text-align: center;
+
+      .degrees {
+        text-align: center;
+        color: rgb(68, 68, 68);
+        padding: 0px 0;
+
+        p {
+          font-size: 2.5em;
+          padding: 5px;
+        }
+      }
+
+      .unit-change {
+        font-size: 1.2em;
+
+        .change-fn {
+          color: #4949ef;
+          cursor: pointer;
+        }
+
+        .disabled {
+          cursor: default;
+        }
+
+        .separator {
+          padding: 0 5px;
+        }
+      }
+    }
+
+    .day-of-week {
+      padding-top: 20px;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
