@@ -19,28 +19,30 @@ export const setCity = (coords) => async dispatch => {
 
   if (cityComponents.status === 'OK') {
     locationInfo.data.results[0].address_components.forEach(comp => {
-      switch(comp.types[0]) {
+      switch (comp.types[0]) {
         case 'locality':
           cityComponents.locality = { long_name: comp.long_name, short_name: comp.short_name }
           break;
-  
+
         case 'administrative_area_level_1':
           cityComponents.admin_area = { long_name: comp.long_name, short_name: comp.short_name }
           break;
-  
+
         case 'country':
           cityComponents.country = { long_name: comp.long_name, short_name: comp.short_name }
           break;
-        
+
         default:
           break;
       }
     });
 
-    if (cityComponents.admin_area.short_name === cityComponents.locality.long_name) {
-      cityComponents.admin_area = undefined;
+    if (cityComponents.admin_area) {
+      if (cityComponents.admin_area.short_name === cityComponents.locality.long_name) {
+        cityComponents.admin_area = undefined;
+      }
     }
-  
+
     cityComponents.formatted_address = locationInfo.data.results[0].formatted_address;
   }
 
