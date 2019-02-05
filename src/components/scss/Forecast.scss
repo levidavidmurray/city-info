@@ -7,6 +7,7 @@
     background-color: white;
     min-width: 180px;
     max-width: 210px;
+    padding: 0 15px;
     padding-top: 20px;
     padding-bottom: 15px;
 
@@ -16,6 +17,8 @@
       justify-content: center;
       align-items: center;
       color: rgb(156, 160, 161);
+      padding-bottom: 7.5px;
+      border-bottom: 1px solid lightgrey;
 
       img {
         width: 64px;
@@ -25,20 +28,21 @@
 
     .temp {
       text-align: center;
+      margin-top: 10px;
 
       .degrees {
         text-align: center;
         color: rgb(68, 68, 68);
-        padding: 0px 0;
+        margin-bottom: 10px;
 
         p {
           font-size: 2.5em;
-          padding: 5px;
+          line-height: 1em;
         }
       }
 
       .unit-change {
-        font-size: 1.2em;
+        font-size: 1.1em;
 
         .change-fn {
           color: #4949ef;
