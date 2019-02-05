@@ -1,15 +1,13 @@
 .forecast {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 
   .day {
     background-color: white;
-    min-width: 180px;
+    min-width: 200px;
     max-width: 210px;
-    padding: 0 15px;
-    padding-top: 20px;
-    padding-bottom: 15px;
+    padding: 20px 15px;
 
     .condition-box {
       display: flex;
@@ -60,7 +58,7 @@
     }
 
     .day-of-week {
-      padding-top: 20px;
+      padding-top: 15px;
 
       p {
         text-align: center;
