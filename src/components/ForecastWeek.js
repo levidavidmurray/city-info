@@ -7,6 +7,18 @@ import openWeather from '../api/openWeather';
 import { OPENWEATHER_KEY } from '../constants';
 import './scss/Forecast.scss';
 
+const getDelayMap = () => {
+  const iterVal = 0.15;
+  let animDelay = 2.5;
+  let delayMap = {};
+
+  for(let i = 0; i < 5; i++) {
+    delayMap[i] = (animDelay += iterVal) + 's';
+  }
+
+  return delayMap;
+}
+
 class ForecastWeek extends Component {
   
   constructor(props) {
@@ -41,20 +53,23 @@ class ForecastWeek extends Component {
 
   getForecastDays() {
     const forecast = this.state.forecast;
+    const animDelayMap = getDelayMap();
 
     if (!forecast)
       return '';
 
     let forecastDays = [];
+    let i = 0;
 
     forecast.list.forEach(weather => {
       const temp = Math.round(weather.main.temp);
-
       if (weather.dt_txt.endsWith('12:00:00')) {
+        weather['animDelay'] = animDelayMap[i];
         weather['dayDate'] = new Date(weather.dt * 1000).toDateString();
         weather['dayTempC'] = temp;
         weather['dayTempF'] = Math.round((temp * 1.8) + 32);
         forecastDays.push(weather);
+        i++;
       }
     });
 

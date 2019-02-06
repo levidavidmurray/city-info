@@ -1,5 +1,5 @@
 import { SET_COORDS, SET_CITY } from './actionTypes';
-import { API_KEY } from '../constants';
+import { MAPS_KEY } from '../constants';
 import googleMapsAPI from '../api/googleMaps';
 
 export const setCoordinates = coords => ({
@@ -11,7 +11,7 @@ export const setCoordinates = coords => ({
 
 export const setCity = (coords) => async dispatch => {
   const { lat, long } = coords;
-  let link = `/geocode/json?result_type=locality&latlng=${lat},${long}&key=${API_KEY}`
+  let link = `/geocode/json?result_type=locality&latlng=${lat},${long}&key=${MAPS_KEY}`
   const locationInfo = await googleMapsAPI.get(link);
   let cityComponents = {
     status: locationInfo.data.status

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './scss/StaticMap.scss';
-import { API_KEY, PLAY_ANIMATIONS } from '../constants';
+import { MAPS_KEY, PLAY_ANIMATIONS } from '../constants';
 
 
 class StaticMap extends Component {
@@ -24,7 +24,7 @@ class StaticMap extends Component {
 
     let link = `https://maps.googleapis.com/maps/api/staticmap?center=`;
     link += `${locality.long_name}+${admin_area.long_name}+${country.long_name}`;
-    link += `BC&zoom=12&size=640x360&scale=2&maptype=satellite&key=${API_KEY}`;
+    link += `BC&zoom=12&size=640x360&scale=2&maptype=satellite&key=${MAPS_KEY}`;
 
     link = link.replace(' ', '+');
 

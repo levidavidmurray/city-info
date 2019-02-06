@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { PLAY_ANIMATIONS } from '../constants';
+
 class ForecastDay extends Component {
 
   getUnitChange() {
@@ -24,6 +26,17 @@ class ForecastDay extends Component {
     );
   }
 
+  getAnimStyle(animDelay) {
+    const css = {
+      opacity: '0',
+      position: 'relative',
+      top: '50px',
+      animation: `day-fade-in 0.8s ${animDelay} forwards`
+    };
+
+    return PLAY_ANIMATIONS ? css : {};
+  }
+
   render() {
     const { day, currentUnit } = this.props;
     let temp = day.dayTempC;
@@ -35,12 +48,11 @@ class ForecastDay extends Component {
       return word[0].toUpperCase() + word.substr(1, word.length);
     }).join(' ');
 
-    if (currentUnit === 'f') {
+    if (currentUnit === 'f')
       temp = day.dayTempF;
-    }
 
     return (
-      <div className="day">
+      <div className="day" style={this.getAnimStyle(day.animDelay)}>
         <div className="condition-box">
           <img src={process.env.PUBLIC_URL + "/img/weather.png"} alt="weather condition" />
           <span>{ weatherDescription }</span>

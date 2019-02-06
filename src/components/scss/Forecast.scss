@@ -1,3 +1,8 @@
+@keyframes day-fade-in {
+  from {top: 50px; opacity: 0;}
+  to {top: 0px; opacity: 1;}
+}
+
 .forecast {
   margin-top: 30px;
   display: flex;
@@ -8,6 +13,7 @@
     min-width: 200px;
     max-width: 210px;
     padding: 20px 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.05);
 
     .condition-box {
       display: flex;
@@ -65,4 +71,5 @@
       }
     }
   }
+
 }
